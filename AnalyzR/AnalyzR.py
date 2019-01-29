@@ -7,32 +7,12 @@ import json
 from datetime import datetime, timedelta
 
 
-#root_url = 'https://old.reddit.com/r/Romania/new/'
 
-#soup = BeautifulSoup(requests.get(root_url, headers={'User-Agent': 'TestCrawler by NoSkillz05'}).text, 'html.parser')
-
-#titles = [] # storing all links here
-#words = ''
-
-#while len(titles) < 10000:
-#    threads = soup.find_all('a', {'class': 'title'})
-#    for thread in threads:
-#        title = thread.text
-#        if title is not None and title not in titles:
-#            titles.append(title)
-
-#    load_more_link = soup.select_one('.next-button a').get('href')
-
-#    soup = BeautifulSoup(requests.get(load_more_link, headers={'User-Agent': 'TestCrawler by NoSkillz05'}).text, 'html.parser')
-
-
-#for title in titles:
-#    words += ' ' + title
 titles = []
 subreddit = 'Romania'
 done = False
-start_date = datetime(2018, 1, 1)
-end_date = datetime(2018, 1, 5)
+start_date = datetime(2015, 1, 1)
+end_date = datetime(2016, 1, 1)
 days_to_increment = 5
 after_date = start_date
 before_date = start_date + timedelta(days_to_increment)
@@ -60,20 +40,28 @@ while not done:
 
 print('Got a total of ' + str(len(titles)) + ' titles')
 
-save_path = 'C:\\Users\\Andrei\\Desktop\\titles.txt'
+save_path = 'C:\\Users\\Andrei\\Desktop\\2015.txt'
 saved_titles = open(save_path, 'x', encoding='utf-8')
-saved_titles.writelines(titles)
+saved_titles.write('\n'.join(titles))
 
 
 
+words = ''
+for title in titles:
+    words += ' ' + title
 
 
+#exclusions = ['de','cu','din','un','mai','de','pe','despre','la','unde',
+              #'ar','se','va','mai','cele','ca','sa','către','am','fi',
+              #'li','in','se','îl','îţi','dă','cea','si','a','în','al','ne',
+              #'te','și','să','ar','le','tot','ţi']
+#for word in exclusions:
+#    words = words.replace(' ' + word + ' ','')
 
+print('Plotting...')
 
-#print('Plotting...')
-
-#word_cloud = WordCloud(width=2048, height=1024).generate(''.join(words))
-#plt.figure(figsize=(20,10))
-#plt.imshow(word_cloud, interpolation="bilinear")
-#plt.axis("off")
-#plt.savefig('C:\\Users\\Andrei\\Desktop\\RomaniaWordCloud.png', dpi=200)
+word_cloud = WordCloud(width=2048, height=1024).generate(''.join(words))
+plt.figure(figsize=(20,10))
+plt.imshow(word_cloud, interpolation="bilinear")
+plt.axis("off")
+plt.savefig('C:\\Users\\Andrei\\Desktop\\RomaniaWordCloud2015.png', dpi=200)
