@@ -1,9 +1,6 @@
-from bs4 import BeautifulSoup
 import requests
-import re
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
-import json
 from datetime import datetime, timedelta
 
 
@@ -11,8 +8,8 @@ from datetime import datetime, timedelta
 titles = []
 subreddit = 'Romania'
 done = False
-start_date = datetime(2015, 1, 1)
-end_date = datetime(2016, 1, 1)
+start_date = datetime(2020, 1, 1)
+end_date = datetime(2021, 1, 1)
 days_to_increment = 5
 after_date = start_date
 before_date = start_date + timedelta(days_to_increment)
@@ -40,7 +37,7 @@ while not done:
 
 print('Got a total of ' + str(len(titles)) + ' titles')
 
-save_path = 'C:\\Users\\Andrei\\Desktop\\2015.txt'
+save_path = '/Users/andrei/Source/AnalyzR/AnalyzR/postTitles2020.txt'
 saved_titles = open(save_path, 'x', encoding='utf-8')
 saved_titles.write('\n'.join(titles))
 
@@ -64,4 +61,4 @@ word_cloud = WordCloud(width=2048, height=1024).generate(''.join(words))
 plt.figure(figsize=(20,10))
 plt.imshow(word_cloud, interpolation="bilinear")
 plt.axis("off")
-plt.savefig('C:\\Users\\Andrei\\Desktop\\RomaniaWordCloud2015.png', dpi=200)
+plt.savefig('/Users/andrei/Source/AnalyzR/AnalyzR/RomaniaWordCloud2020.png', dpi=200)
