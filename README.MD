@@ -7,7 +7,7 @@ The subreddit targeted is [/r/Romania](https://www.reddit.com/r/Romania/).
 We get all the titles in a specified timeframe (1 year), save them to disk, then run all these titles through wordcloud.
 The result? You can see the wordcloud for all (~7000) submissions in 2021 below.
 
-<img src="docs/RomaniaWordCloud2020.png" alt="result" width="1000">
+<img src="docs/RomaniaWordCloud.png" alt="result" width="1000">
 
 
 
