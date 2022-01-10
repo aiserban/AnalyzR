@@ -5,7 +5,7 @@ The subreddit targeted is [/r/Romania](https://www.reddit.com/r/Romania/).
 
 [pushshift.io](https://pushshift.io/) provides an API you can query to get data from Reddit in the form of a JSON.
 We get all the titles in a specified timeframe (1 year), save them to disk, then run all these titles through wordcloud.
-The result? Scroll down for an example.
+The result? You can see the wordcloud for all (~7000) submissions in 2021 below.
 
 <img src="docs/RomaniaWordCloud2020.png" alt="result" width="1000">
 
