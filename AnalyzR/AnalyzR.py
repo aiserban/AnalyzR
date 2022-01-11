@@ -1,12 +1,15 @@
-import requests, re, os
+import requests, re, os, nltk
+from nltk.corpus import stopwords
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
 from unidecode import unidecode
 
+
 subreddit = 'Romania'
 output_dir = os.getcwd()
 output_filename = 'RomaniaWordCloud'
+nltk.download('stopwords')
 
 
 titles = []
@@ -49,112 +52,8 @@ for title in titles:
     substring = re.sub(r'[^\w\s\-]', '', substring)
     words += substring + ' '
 
-# conjunctii, anomalii etc
-exclusions = [
-    'fost',
-    'cine',
-    'au',
-    'ca',
-    'că',
-    'căci',
-    'când',
-    'cât',
-    'cum',
-    'dacă',
-    'dar',
-    'darămite',
-    'de',
-    'decât',
-    'deci',
-    'deoarece',
-    'deși',
-    'fără',
-    'fie',
-    'fiindcă',
-    'iar',
-    'isi',
-    'încât',
-    'însă',
-    'întrucât',
-    'necum',
-    'nici',
-    'numai',
-    'or',
-    'ori',
-    'până',
-    'uri',
-    'F',
-    'lui',
-    'precum',
-    'sau',
-    'să',
-    'și',
-    'totuși',
-    'unde',
-    'pe',
-    'la',
-    'spre',
-    'cu',
-    'de',
-    'fără',
-    'sub',
-    'în',
-    'prin',
-    'pentru',
-    'către',
-    'contra',
-    'lângă',
-    'ce',
-    'si',
-    'sa',
-    'ma',
-    'fi',
-    'in',
-    'din',
-    'care',
-    'se',
-    'de',
-    'va',
-    'fi',
-    'ati',
-    'imi',
-    'asa',
-    'mi',
-    'un',
-    'nu',
-    'da',
-    'mai',
-    'ati',
-    'ce',
-    'cat',
-    'o',
-    'e',
-    'la',
-    'ne',
-    'pe',
-    'au',
-    'mi',
-    'al',
-    'cel',
-    'vs',
-    'își',
-    'pt',
-    'new',
-    'home',
-    'ati',
-    'asa',
-    'ai',
-    'te',
-    'le',
-    'o',
-    'mi',
-    'ul',
-    'n',
-    'm',
-    'l',
-    'il',
-    'ii'
-]
+
+exclusions = set(stopwords.words('romanian'))
 
 word_list = words.split(' ')
 curated_words = ''
