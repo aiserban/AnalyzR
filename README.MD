@@ -14,6 +14,8 @@ The result? You can see the wordcloud for all (~7000) submissions in 2021 below.
 ### Requirements
 - Python3
 - python3 -m install wordcloud
+- python3 -m install nltk
+- python3 -m install unidecode
 
 ### How to run
 - make sure to edit the output folders in analyzr.py
